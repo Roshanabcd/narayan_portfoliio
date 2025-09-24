@@ -2,14 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="Permissions-Policy" content="unload=()">
+    <meta name="description" content="Aatish Karn - Professional Vlogger & Content Creator from Nepal. Travel, Lifestyle, and Adventure Videos.">
+    <meta name="keywords" content="Aatish Karn, vlogger, content creator, Nepal, travel, lifestyle, vlogs">
+    <meta name="author" content="Aatish Karn">
     <title>Aatish Karn - Vlogger & Content Creator</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="profile/profile.jpg" as="image">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    
+    <!-- Critical CSS inline for above-the-fold content -->
+    <style>
+        /* Critical CSS for immediate rendering */
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #2c3e50;
+            --accent-color: #f39c12;
+            --text-color: #333;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+        }
+    </style>
+    
+    <!-- Load non-critical CSS asynchronously -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Header Section -->
@@ -24,34 +84,129 @@
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="theme-toggle">
-                <input type="checkbox" id="theme-switch" class="theme-switch">
-                <label for="theme-switch" class="theme-label">
-                    <i class="fas fa-sun sun-icon"></i>
-                    <i class="fas fa-moon moon-icon"></i>
-                    <span class="toggle-slider"></span>
-                </label>
-            </div>
             <div class="hamburger">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
-            </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="typing-text">Hi, I'm Aatish Karn</h1>
-            <p class="tagline">Vlogger | Content Creator | Storyteller</p>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/its__aghori?igsh=MXVsY2R2YmdtanVsdw==" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/share/19g5GM6uGD/" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="http://tiktok.com/@its_aghori" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <div class="hero-background">
+            <div class="animated-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
             </div>
-            <a href="#videos" class="cta-button">Watch My Videos</a>
+        </div>
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Content Creator</span>
+                    </div>
+                    <h1 class="typing-text">Hi, I'm <span class="highlight">Aatish Karn</span></h1>
+                    <p class="tagline">
+                        <span class="role">Vlogger</span> | 
+                        <span class="role">Content Creator</span> | 
+                        <span class="role">Storyteller</span>
+                    </p>
+                    <p class="hero-description">
+                        Welcome to my world of adventures, culture, and storytelling. Join me as I explore 
+                        amazing places, share incredible experiences, and connect with people from all walks of life.
+                        <span class="highlight-text">Let's create memories together!</span>
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-target="50000">5000+</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="150">40+</span>
+                            <span class="stat-label">Videos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="25">5+</span>
+                            <span class="stat-label">Countries</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" target="_blank" title="YouTube" class="social-link youtube">
+                            <i class="fab fa-youtube"></i>
+                            <span>YouTube</span>
+                        </a>
+                        <a href="https://www.instagram.com/its__aghori?igsh=MXVsY2R2YmdtanVsdw==" target="_blank" title="Instagram" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.facebook.com/share/19g5GM6uGD/" target="_blank" title="Facebook" class="social-link facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="http://tiktok.com/@its_aghori" target="_blank" title="TikTok" class="social-link tiktok">
+                            <i class="fab fa-tiktok"></i>
+                            <span>TikTok</span>
+                        </a>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#videos" class="cta-button primary">
+                            <i class="fas fa-play"></i>
+                            <span>Watch My Videos</span>
+                        </a>
+                        <a href="#about" class="cta-button secondary">
+                            <i class="fas fa-user"></i>
+                            <span>Learn More</span>
+                        </a>
+                        <a href="#contact" class="cta-button tertiary">
+                            <i class="fas fa-envelope"></i>
+                            <span>Get In Touch</span>
+                        </a>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <div class="image-frame">
+                            <img src="profile/profile.jpg" 
+                                 alt="Aatish Karn - Content Creator" 
+                                 class="profile-image"
+                                 loading="eager"
+                                 decoding="async">
+                        </div>
+                        <div class="image-overlay">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="image-decorations">
+                            <div class="decoration decoration-1"></div>
+                            <div class="decoration decoration-2"></div>
+                            <div class="decoration decoration-3"></div>
+                        </div>
+                    </div>
+                    <div class="floating-elements">
+                        <div class="floating-item camera">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="floating-item heart">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="floating-item location">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="floating-item trophy">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <span>Scroll to explore</span>
         </div>
     </section>
 
@@ -61,30 +216,171 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="profile/profile.jpg" alt="Aatish Karn">
+                    <img src="profile/profile.jpg" 
+                         alt="Aatish Karn - Professional Vlogger" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="400" 
+                         height="400">
                 </div>
                 <div class="about-text">
-                    <h3>Who Am I?</h3>
-                    <p>Hello! I'm Aatish Karn, a passionate vlogger and content creator dedicated to sharing engaging stories and experiences through my videos. With a keen eye for detail and a love for storytelling, I create content that inspires and entertains my audience.</p>
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <span>Name:</span>
-                            <p>Aatish Karn</p>
-                        </div>
-                        <div class="detail-item">
-                            <span>From:</span>
-                            <p>Nepal</p>
-                        </div>
-                        <div class="detail-item">
-                            <span>Email:</span>
-                            <p>aatishkarn0810@gmail.com</p>
-                        </div>
-                        <div class="detail-item">
-                            <span>Content Type:</span>
-                            <p>Travel, Lifestyle, Vlogs</p>
+                    <div class="about-header">
+                        <h3 class="about-title">
+                            <span class="title-accent">Who Am I?</span>
+                            <div class="title-decoration"></div>
+                        </h3>
+                        <!-- <div class="about-badge">
+                            <i class="fas fa-video"></i>
+                            <span>Content Creator</span>
+                        </div> -->
+                    </div>
+                    
+                    <div class="about-intro">
+                        <p class="intro-text">Hello! I'm <span class="highlight-name">Aatish Karn</span>, a passionate vlogger and content creator dedicated to sharing engaging stories and experiences through my videos. With a keen eye for detail and a love for storytelling, I create content that inspires and entertains my audience.</p>
+                        <div class="intro-stats">
+                            <div class="stat-bubble">
+                                <i class="fas fa-heart"></i>
+                                <span>Passionate</span>
+                            </div>
+                            <div class="stat-bubble">
+                                <i class="fas fa-eye"></i>
+                                <span>Detail-Oriented</span>
+                            </div>
+                            <div class="stat-bubble">
+                                <i class="fas fa-magic"></i>
+                                <span>Creative</span>
+                            </div>
                         </div>
                     </div>
-                    <a href="#" class="download-cv">Download Media Kit</a>
+                    
+                    <div class="about-details">
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Name</span>
+                                <p class="detail-value">Aatish Karn</p>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">From</span>
+                                <p class="detail-value">Nepal 🇳🇵</p>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Email</span>
+                                <p class="detail-value">aatishkarn0810@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Content Type</span>
+                                <div class="content-tags">
+                                    <span class="content-tag travel">🌍 Travel</span>
+                                    <span class="content-tag lifestyle">🎯 Lifestyle</span>
+                                    <span class="content-tag vlogs">📹 Vlogs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-actions">
+                        <a href="#" class="download-cv">
+                            <i class="fas fa-download"></i>
+                            <span>Download Media Kit</span>
+                        </a>
+                        <a href="#contact" class="contact-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Get In Touch</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Channel Analytics Section -->
+    <section id="analytics" class="analytics">
+        <div class="container">
+            <div class="analytics-header">
+                <h2 class="section-title">Channel Analytics</h2>
+                <p class="section-subtitle">Track my journey and growth across all platforms</p>
+            </div>
+            
+            <div class="analytics-grid">
+                <div class="analytics-card views">
+                    <div class="analytics-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="analytics-content">
+                        <span class="analytics-number" data-target="125000">0</span>
+                        <span class="analytics-label">Total Views</span>
+                        <div class="analytics-trend">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+12.5% this month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-card subscribers">
+                    <div class="analytics-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="analytics-content">
+                        <span class="analytics-number" data-target="8500">0</span>
+                        <span class="analytics-label">Subscribers</span>
+                        <div class="analytics-trend">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+8.2% this month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-card videos">
+                    <div class="analytics-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="analytics-content">
+                        <span class="analytics-number" data-target="42">0</span>
+                        <span class="analytics-label">Total Videos</span>
+                        <div class="analytics-trend">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+3 this month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-card likes">
+                    <div class="analytics-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="analytics-content">
+                        <span class="analytics-number" data-target="15600">0</span>
+                        <span class="analytics-label">Total Likes</span>
+                        <div class="analytics-trend">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+15.3% this month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="growth-chart-container">
+                <h3>Channel Growth</h3>
+                <div class="chart-wrapper">
+                    <canvas id="growthChart" width="400" height="200"></canvas>
                 </div>
             </div>
         </div>
@@ -93,37 +389,63 @@
     <!-- Videos Section -->
     <section id="videos" class="videos">
         <div class="container">
-            <h2 class="section-title">Latest Videos</h2>
+            <div class="videos-header">
+                <h2 class="section-title">Latest Videos</h2>
+                <p class="section-subtitle">Discover my latest adventures and stories</p>
+            </div>
             
-            <!-- Search and Filter Controls -->
+            <!-- Enhanced Video Controls -->
             <div class="video-controls">
-                <div class="search-container">
-                    <input type="text" id="video-search" placeholder="Search videos..." class="search-input">
-                    <i class="fas fa-search search-icon"></i>
+                <div class="controls-row">
+                    <div class="search-container">
+                        <input type="text" id="video-search" placeholder="Search videos..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="filter-container">
-                    <select id="video-filter" class="filter-select">
-                        <option value="all">All Categories</option>
-                        <option value="travel">Travel</option>
-                        <option value="lifestyle">Lifestyle</option>
-                        <option value="adventure">Adventure</option>
-                        <option value="culture">Culture</option>
-                    </select>
-                </div>
-                <div class="sort-container">
-                    <select id="video-sort" class="sort-select">
-                        <option value="newest">Newest First</option>
-                        <option value="oldest">Oldest First</option>
-                        <option value="duration">By Duration</option>
-                        <option value="popular">Most Popular</option>
-                    </select>
+                
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label>Category:</label>
+                        <select id="video-filter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="travel">🌍 Travel</option>
+                            <option value="lifestyle">🎯 Lifestyle</option>
+                            <option value="adventure">🏔️ Adventure</option>
+                            <option value="culture">🎭 Culture</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Sort by:</label>
+                        <select id="video-sort" class="sort-select">
+                            <option value="newest">🆕 Newest First</option>
+                            <option value="oldest">📅 Oldest First</option>
+                            <option value="duration">⏱️ By Duration</option>
+                            <option value="popular">🔥 Most Popular</option>
+                        </select>
+                    </div>
+                    
+                    <div class="results-count">
+                        <span id="video-count">4 videos found</span>
+                    </div>
                 </div>
             </div>
             
             <div class="video-grid">
                 <div class="video-card">
                     <div class="video-thumbnail">
-                        <video class="video-preview" poster="thumbnail/first_thumbnail.jpg">
+                        <video class="video-preview" 
+                               poster="thumbnail/first_thumbnail.jpg"
+                               preload="none"
+                               loading="lazy">
                             <source src="video/first_thumbnail.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -134,7 +456,10 @@
                 </div>
                 <div class="video-card">
                     <div class="video-thumbnail">
-                        <video class="video-preview" poster="thumbnail/2nd_thumbnail.jpg">
+                        <video class="video-preview" 
+                               poster="thumbnail/2nd_thumbnail.jpg"
+                               preload="none"
+                               loading="lazy">
                             <source src="video/2nd_thumbnail.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -145,7 +470,10 @@
                 </div>
                 <div class="video-card">
                     <div class="video-thumbnail">
-                        <video class="video-preview" poster="thumbnail/moment.jpg">
+                        <video class="video-preview" 
+                               poster="thumbnail/moment.jpg"
+                               preload="none"
+                               loading="lazy">
                             <source src="video/moment.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -156,7 +484,10 @@
                 </div>
                 <div class="video-card">
                     <div class="video-thumbnail">
-                        <video class="video-preview" poster="thumbnail/thumbnail_3.jpg">
+                        <video class="video-preview" 
+                               poster="thumbnail/thumbnail_3.jpg"
+                               preload="none"
+                               loading="lazy">
                             <source src="video/thumbnail_3.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -173,7 +504,7 @@
     </section>
 
     <!-- Analytics Dashboard -->
-    <section id="analytics" class="analytics">
+    <!-- <section id="analytics" class="analytics">
         <div class="container">
             <h2 class="section-title">Channel Analytics</h2>
             <div class="analytics-grid">
@@ -215,13 +546,13 @@
                 </div>
             </div>
             
-            <!-- Growth Chart -->
-            <div class="chart-container">
+             Growth Chart -->
+            <!-- <div class="chart-container">
                 <h3>Channel Growth</h3>
                 <canvas id="growthChart" width="400" height="200"></canvas>
-            </div>
+            </div> 
         </div>
-    </section>
+    </section> -->
 
     <!-- Gallery Section -->
     <section id="gallery" class="gallery">
@@ -229,37 +560,67 @@
             <h2 class="section-title">Photo Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="image/IMG-20250903-WA0002.jpg" alt="Aatish Karn 1">
+                    <img src="image/IMG-20250903-WA0002.jpg" 
+                         alt="Aatish Karn Travel Photography 1" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="300" 
+                         height="300">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="image/IMG-20250903-WA0003.jpg" alt="Aatish Karn 2">
+                    <img src="image/IMG-20250903-WA0003.jpg" 
+                         alt="Aatish Karn Travel Photography 2" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="300" 
+                         height="300">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="image/IMG-20250903-WA0004.jpg" alt="Aatish Karn 3">
+                    <img src="image/IMG-20250903-WA0004.jpg" 
+                         alt="Aatish Karn Adventure Photography 3" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="300" 
+                         height="300">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="image/IMG-20250903-WA0005.jpg" alt="Aatish Karn 4">
+                    <img src="image/IMG-20250903-WA0005.jpg" 
+                         alt="Aatish Karn Lifestyle Photography 4" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="300" 
+                         height="300">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="image/IMG-20250903-WA0006.jpg" alt="Aatish Karn 5">
+                    <img src="image/IMG-20250903-WA0006.jpg" 
+                         alt="Aatish Karn Cultural Photography 5" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="300" 
+                         height="300">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="image/IMG-20250903-WA0007.jpg" alt="Aatish Karn 6">
+                    <img src="image/IMG-20250903-WA0007.jpg" 
+                         alt="Aatish Karn Nature Photography 6" 
+                         loading="lazy" 
+                         decoding="async"
+                         width="300" 
+                         height="300">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
@@ -275,7 +636,12 @@
             <div class="blog-grid">
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Travel Tips">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Travel Tips Blog Post" 
+                             loading="lazy" 
+                             decoding="async"
+                             width="800" 
+                             height="400">
                         <div class="blog-category">Travel</div>
                     </div>
                     <div class="blog-content">
@@ -297,7 +663,12 @@
                 
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Video Equipment">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Video Equipment Blog Post" 
+                             loading="lazy" 
+                             decoding="async"
+                             width="800" 
+                             height="400">
                         <div class="blog-category">Tech</div>
                     </div>
                     <div class="blog-content">
@@ -319,7 +690,12 @@
                 
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nepal Culture">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Nepal Culture Blog Post" 
+                             loading="lazy" 
+                             decoding="async"
+                             width="800" 
+                             height="400">
                         <div class="blog-category">Culture</div>
                     </div>
                     <div class="blog-content">
@@ -469,6 +845,37 @@
         </div>
     </div>
 
-    <script src="script-clean.js"></script>
+    <!-- Load Chart.js only when needed -->
+    <script>
+        // Lazy load Chart.js when analytics section is visible
+        const loadChartJS = () => {
+            if (!window.Chart) {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+                script.async = true;
+                document.head.appendChild(script);
+            }
+        };
+        
+        // Intersection Observer for lazy loading
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    loadChartJS();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const analyticsSection = document.getElementById('analytics');
+            if (analyticsSection) {
+                observer.observe(analyticsSection);
+            }
+        });
+    </script>
+    
+    <!-- Load main script with defer -->
+    <script src="script-clean.js" defer></script>
 </body>
 </html>

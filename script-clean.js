@@ -1,6 +1,51 @@
-// Clean JavaScript for Aatish Karn Portfolio
+// Optimized JavaScript for Aatish Karn Portfolio
 (function() {
     'use strict';
+    
+    // Performance optimization: Use passive event listeners
+    const passiveSupported = (() => {
+        let passiveSupported = false;
+        try {
+            const options = {
+                get passive() {
+                    passiveSupported = true;
+                    return false;
+                }
+            };
+            window.addEventListener('test', null, options);
+            window.removeEventListener('test', null, options);
+        } catch (err) {
+            passiveSupported = false;
+        }
+        return passiveSupported;
+    })();
+    
+    // Throttle function for performance
+    const throttle = (func, limit) => {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    };
+    
+    // Debounce function for performance
+    const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    };
 
     // Mobile Navigation Toggle
     function initMobileMenu() {
@@ -24,18 +69,20 @@
         });
     }
 
-    // Sticky Header on Scroll
+    // Sticky Header on Scroll - Optimized
     function initStickyHeader() {
         const header = document.querySelector('.header');
         if (!header) return;
         
-        window.addEventListener('scroll', () => {
+        const handleScroll = throttle(() => {
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
-        });
+        }, 16); // ~60fps
+        
+        window.addEventListener('scroll', handleScroll, passiveSupported ? { passive: true } : false);
     }
 
     // Typing Effect
@@ -272,7 +319,7 @@
         });
     }
 
-    // Video Search and Filter
+    // Video Search and Filter - Optimized
     function initVideoSearch() {
         const searchInput = document.getElementById('video-search');
         const filterSelect = document.getElementById('video-filter');
@@ -288,7 +335,7 @@
             { element: videoCards[3], title: 'Adventure Time', category: 'travel', date: new Date('2024-03-01'), views: 5432 }
         ];
         
-        function filterAndSortVideos() {
+        const filterAndSortVideos = debounce(() => {
             const searchTerm = searchInput.value.toLowerCase();
             const filterCategory = filterSelect.value;
             const sortBy = sortSelect.value;
@@ -312,45 +359,53 @@
                 }
             });
             
-            videoCards.forEach(card => {
-                card.style.display = 'none';
-            });
-            
-            setTimeout(() => {
+            // Use requestAnimationFrame for smooth animations
+            requestAnimationFrame(() => {
+                videoCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                
                 filteredVideos.forEach((video, index) => {
                     if (video.element) {
                         video.element.style.display = 'block';
-                        video.element.style.animation = `fadeInUp 0.5s ease ${index * 0.1}s both`;
+                        video.element.style.animation = `fadeInUp 0.4s ease ${index * 0.05}s both`;
                     }
                 });
-            }, 100);
-        }
+            });
+        }, 300);
         
         searchInput.addEventListener('input', filterAndSortVideos);
         filterSelect.addEventListener('change', filterAndSortVideos);
         sortSelect.addEventListener('change', filterAndSortVideos);
     }
 
-    // Analytics Counter Animation
+    // Analytics Counter Animation - Optimized
     function initAnalytics() {
         const counters = document.querySelectorAll('.analytics-number');
         
         const animateCounter = (counter) => {
             const target = parseInt(counter.getAttribute('data-target'));
-            const increment = target / 100;
-            let current = 0;
+            const duration = 2000; // 2 seconds
+            const start = performance.now();
             
-            const updateCounter = () => {
-                if (current < target) {
-                    current += increment;
-                    counter.textContent = Math.floor(current).toLocaleString();
+            const updateCounter = (currentTime) => {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const current = Math.floor(target * easeOutQuart);
+                
+                counter.textContent = current.toLocaleString();
+                
+                if (progress < 1) {
                     requestAnimationFrame(updateCounter);
                 } else {
                     counter.textContent = target.toLocaleString();
                 }
             };
             
-            updateCounter();
+            requestAnimationFrame(updateCounter);
         };
         
         const observer = new IntersectionObserver((entries) => {
@@ -360,50 +415,68 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.3, rootMargin: '0px 0px -50px 0px' });
         
         counters.forEach(counter => observer.observe(counter));
         
-        // Initialize Chart if Chart.js is available
-        const ctx = document.getElementById('growthChart');
-        if (ctx && typeof Chart !== 'undefined') {
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                    datasets: [{
-                        label: 'Subscribers',
-                        data: [1200, 1900, 3000, 5000, 6500, 8500],
-                        borderColor: '#ff6b35',
-                        backgroundColor: 'rgba(255, 107, 53, 0.1)',
-                        tension: 0.4,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
+        // Initialize Chart if Chart.js is available (lazy loaded)
+        const initChart = () => {
+            const ctx = document.getElementById('growthChart');
+            if (ctx && window.Chart) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Subscribers',
+                            data: [1200, 1900, 3000, 5000, 6500, 8500],
+                            borderColor: '#ff6b35',
+                            backgroundColor: 'rgba(255, 107, 53, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        animation: {
+                            duration: 1500
                         }
                     }
+                });
+            }
+        };
+        
+        // Wait for Chart.js to load
+        if (window.Chart) {
+            initChart();
+        } else {
+            // Poll for Chart.js availability
+            const checkChart = setInterval(() => {
+                if (window.Chart) {
+                    clearInterval(checkChart);
+                    initChart();
                 }
-            });
+            }, 100);
         }
     }
 
-    // Back to Top Button
+    // Back to Top Button - Optimized
     function initBackToTop() {
         const backToTopBtn = document.querySelector('.back-to-top');
         if (!backToTopBtn) return;
         
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.style.display = 'flex';
-            } else {
-                backToTopBtn.style.display = 'none';
-            }
-        });
+        const handleScroll = throttle(() => {
+            const shouldShow = window.scrollY > 300;
+            backToTopBtn.style.display = shouldShow ? 'flex' : 'none';
+        }, 100);
+        
+        window.addEventListener('scroll', handleScroll, passiveSupported ? { passive: true } : false);
         
         backToTopBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -458,32 +531,60 @@
         });
     }
 
+    // Optimize gallery animations
+    function optimizeAnimations() {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('animationend', () => {
+                item.classList.add('animation-complete');
+            }, { once: true });
+        });
+    }
+    
     // Initialize all functions when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
+        // Critical functions first
         initMobileMenu();
         initStickyHeader();
         initTypingEffect();
-        initVideoPopup();
-        initImageLightbox();
-        initThemeToggle();
-        initVideoSearch();
-        initAnalytics();
-        initBackToTop();
-        initContactForm();
-        initSmoothScrolling();
+        
+        // Non-critical functions with slight delay
+        requestAnimationFrame(() => {
+            initVideoPopup();
+            initImageLightbox();
+            initBackToTop();
+            initSmoothScrolling();
+            optimizeAnimations();
+        });
+        
+        // Heavy functions with more delay
+        setTimeout(() => {
+            initThemeToggle();
+            initVideoSearch();
+            initAnalytics();
+            initContactForm();
+        }, 100);
         
         console.log('Portfolio initialized successfully!');
     });
 
-    // Preloader
+    // Preloader - Optimized
     window.addEventListener('load', () => {
         const preloader = document.querySelector('.preloader');
         if (preloader) {
             preloader.style.opacity = '0';
-            setTimeout(() => {
+            preloader.addEventListener('transitionend', () => {
                 preloader.style.display = 'none';
-            }, 500);
+            }, { once: true });
         }
+        
+        // Remove will-change properties after page load
+        setTimeout(() => {
+            document.querySelectorAll('[style*="will-change"]').forEach(el => {
+                el.style.willChange = 'auto';
+            });
+        }, 1000);
     });
 
 })();
