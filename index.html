@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Header Section -->
@@ -20,8 +21,17 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#videos">Videos</a></li>
                 <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-switch" class="theme-switch">
+                <label for="theme-switch" class="theme-label">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
             <div class="hamburger">
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -84,6 +94,32 @@
     <section id="videos" class="videos">
         <div class="container">
             <h2 class="section-title">Latest Videos</h2>
+            
+            <!-- Search and Filter Controls -->
+            <div class="video-controls">
+                <div class="search-container">
+                    <input type="text" id="video-search" placeholder="Search videos..." class="search-input">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div class="filter-container">
+                    <select id="video-filter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="travel">Travel</option>
+                        <option value="lifestyle">Lifestyle</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="culture">Culture</option>
+                    </select>
+                </div>
+                <div class="sort-container">
+                    <select id="video-sort" class="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="duration">By Duration</option>
+                        <option value="popular">Most Popular</option>
+                    </select>
+                </div>
+            </div>
+            
             <div class="video-grid">
                 <div class="video-card">
                     <div class="video-thumbnail">
@@ -93,7 +129,7 @@
                         </video>
                         <div class="play-button"><i class="fas fa-play"></i></div>
                     </div>
-                    <h3>First Thumbnail</h3>
+                    <h3>A Journey Through Time & Adventure</h3>
                     <p>Vlog • 2:15</p>
                 </div>
                 <div class="video-card">
@@ -132,6 +168,57 @@
             </div>
             <div class="view-more">
                 <a href="#" class="cta-button">View All Videos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Dashboard -->
+    <section id="analytics" class="analytics">
+        <div class="container">
+            <h2 class="section-title">Channel Analytics</h2>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <div class="analytics-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="analytics-content">
+                        <h3 class="analytics-number" data-target="125000">0</h3>
+                        <p>Total Views</p>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <div class="analytics-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="analytics-content">
+                        <h3 class="analytics-number" data-target="8500">0</h3>
+                        <p>Subscribers</p>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <div class="analytics-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="analytics-content">
+                        <h3 class="analytics-number" data-target="42">0</h3>
+                        <p>Total Videos</p>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <div class="analytics-icon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <div class="analytics-content">
+                        <h3 class="analytics-number" data-target="15600">0</h3>
+                        <p>Total Likes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Growth Chart -->
+            <div class="chart-container">
+                <h3>Channel Growth</h3>
+                <canvas id="growthChart" width="400" height="200"></canvas>
             </div>
         </div>
     </section>
@@ -177,6 +264,83 @@
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title">Latest Blog Posts</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Travel Tips">
+                        <div class="blog-category">Travel</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">
+                                <i class="fas fa-calendar"></i>
+                                March 15, 2024
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="fas fa-clock"></i>
+                                5 min read
+                            </span>
+                        </div>
+                        <h3>10 Essential Travel Tips for Content Creators</h3>
+                        <p>Discover the secrets to creating amazing travel content while exploring new destinations. From camera gear to storytelling techniques...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Video Equipment">
+                        <div class="blog-category">Tech</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">
+                                <i class="fas fa-calendar"></i>
+                                March 10, 2024
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="fas fa-clock"></i>
+                                7 min read
+                            </span>
+                        </div>
+                        <h3>My Video Equipment Setup for 2024</h3>
+                        <p>A comprehensive guide to the cameras, microphones, and editing tools I use to create professional-quality vlogs and content...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nepal Culture">
+                        <div class="blog-category">Culture</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">
+                                <i class="fas fa-calendar"></i>
+                                March 5, 2024
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="fas fa-clock"></i>
+                                6 min read
+                            </span>
+                        </div>
+                        <h3>Exploring Hidden Gems of Nepal</h3>
+                        <p>Join me on a journey through Nepal's lesser-known destinations, where ancient traditions meet breathtaking landscapes...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div class="view-more">
+                <a href="#" class="cta-button">View All Posts</a>
             </div>
         </div>
     </section>
@@ -290,6 +454,21 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Image Lightbox -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-image" src="" alt="">
+            <div class="lightbox-nav">
+                <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="lightbox-counter">
+                <span class="current-image">1</span> / <span class="total-images">6</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-clean.js"></script>
 </body>
 </html>
